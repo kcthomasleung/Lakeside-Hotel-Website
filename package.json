@@ -1,0 +1,24 @@
+{
+  "name": "Lakeside-Hotel-Website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcthomasleung/Lakeside-Hotel-Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kcthomasleung/Lakeside-Hotel-Website/issues"
+  },
+  "homepage": "https://github.com/kcthomasleung/Lakeside-Hotel-Website#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

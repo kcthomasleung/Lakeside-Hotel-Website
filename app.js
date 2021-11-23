@@ -1,10 +1,18 @@
-const express = require("express");
+import express from "express";
+import bodyParser from "body-parser";
+
 const app = express();
-const bodyParser = require("body-parser");
+const PORT = 5000;
+
 const jsonParser = bodyParser.json();
 
 app.use(express.static("public"));
+app.use(bodyParser.json());
 
-app.listen(3000, function () {
-  console.log("Express app listening on port 3000...");
+app.get("/bookings", (req, res) => {
+  res.send("You have requested to get bookings");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port: http://localhost:${PORT}`);
 });
