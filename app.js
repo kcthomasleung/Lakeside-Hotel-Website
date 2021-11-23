@@ -10,7 +10,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 
 app.get("/bookings", (req, res) => {
-  res.send("You have requested to get bookings");
+  res.send("You have requested to see the rooms");
 });
 
 app.listen(PORT, () => {
