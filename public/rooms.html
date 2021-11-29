@@ -5,11 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Lake Side Hotel</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="rooms.css" />
     <script src="./js/rooms.js" defer></script>
+    <script src = "rooms.js" ></script>
   </head>
 
-  <body>
-    <h1>Lake Side Hotel</h1>
+    <body>
+      <header>
+        <img id= "logo" src = "Real-Logo.png" alt = "Website_logo">
+  
+        <!-- Navigation bar at top of page -->
+        <nav class= "navbar"> 
+          <a href="index.html">HOME</a>
+          <a href="rooms.html">ROOMS</a>
+          <a href="attractions.html">ATTRACTIONS</a>
+          <a href="facilities.html">FACILITIES</a>
+        </nav>
+      </header>
+    <main>
+
+      <div class="room-flex">
+
+          <div> 
+            <h2 class="room_titles"> Double Room </h2>
+            <img class="img_drc" src="Double room cheap.jpg">
+            <div class="room_titles">Double Room standard</div>
+            <button class="book-now"> Book Now!</button>
+          </div>
+
+          <div class="seperator"></div>
+
+          <div> 
+            <h2 class="room_titles">Twin Room </h2>
+            <img class="img_trc" src="twin room cheap.jpg">  
+            <div class="room_titles">Twin room cheap</div>
+            <button class="book-now"> Book Now!</button>
+          </div>
+
+      </div>
+
+    </main>
   </body>
+  <footer>
+    <h4 id="footer">Created by Lauren, Sam and Tom!</h4>
+  </footer>
 </html>
+
+<!-- slideshow code, https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+<!-- <div class="slideshow-container"> 
+
+  <div class="slides-collection">
+    <div class="image">1/4</div>
+    <img src="Double room cheap.jpg">
+    <div class="caption">Double Room standard</div>
+  </div>
+
+  <div class="slides-collection">
+    <div class="image">2/4</div>
+    <img src="Double room expense.jpg">
+    <div class="caption">Double room deluxe</div>
+    <a class="prev" onclick="plusslides(-1)">O</a>
+    <a class="next" onclick="plusslides(1)">A</a>
+  </div>
+    
+</div> -->
+
+<!-- <div class="slideshow-container">
+
+  <div class="slides-collection">
+    <div class="image">3/4</div>
+    <img src="twin room cheap.jpg">
+    <div class="caption">Twin room cheap</div>
+  </div>
+
+  <div class="slides-collection">
+    <div class="image">4/4</div>
+    <img src="Twin room expense.jpg">
+    <div class="caption">Twin room deluxe</div>
+    
+    <a class="prev" onclick="plusslides(-1)">O</a>
+    <a class="next" onclick="plusslides(1)">A</a>
+  </div>
+</div> -->

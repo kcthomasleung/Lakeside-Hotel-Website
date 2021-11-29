@@ -1,0 +1,91 @@
+#logo{
+    position: absolute;
+    width:150px;
+    height:150px;
+}
+
+.navbar {
+    background-color: #0F0906;
+    justify-content: center;
+    width: 100%;
+    padding: 30px;
+    font-size: 150%;
+    display: flex;
+}
+
+.navbar a {
+    color: #C4C4C4;
+    width: 10%;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+}
+
+.navbar a:hover {
+    color: #B98B73;
+}
+
+body{
+    margin:0px;
+    background: rgba(92, 105, 60, 0.5);
+   
+}
+
+#footer{
+    background-color: #0F0906;
+    color:#C4C4C4;
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    margin: 0px;
+    padding: 5px;
+}
+
+.room-flex{
+    display: flex;
+    flex-direction: row;
+    /* background-color: rgba(92, 105, 60, 0.81); */
+}
+
+.room-flex > div {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    display: flex;
+    margin: 10px;
+    /* background-color: #c4c4c4; */
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.img_drc{
+    display: flex;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seperator{
+    display: flex;
+    border-left:0.3rem solid black;
+    margin-right: auto;
+    margin-left: auto;
+}
+.img_trc{
+    display: flex;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.room_titles{
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.book-now{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
