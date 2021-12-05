@@ -1,4 +1,5 @@
-<%- include('head') %>
+<%- include('head')  %>
+<script src="./js/booking.js" defer></script>
 <%- include('header') %>
 
 <body>
@@ -6,32 +7,32 @@
   <fieldset>
     <form id="booking_form">
       <label for="room_type">Select Room Type</label><br /><br />
-      <label for="std_doub_rm_qty">Standard Double Room: </label>
-      <select id="std_doub_rm_qty" name="std_doub_rm_qty">
+      <label for="std_d_rm_qty">Standard Double Room: </label>
+      <select id="std_d_rm_qty" name="std_d_rm_qty">
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option></select
       ><br />
-      <label for="prm_doub_rm_qty">Premium Double Room:</label>
-      <select id="prm_doub_rm_qty" name="prm_doub_rm_qty">
+      <label for="sup_d_rm_qty"> Superior Double Room:</label>
+      <select id="sup_d_rm_qty" name="sup_d_rm_qty">
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option></select
       ><br />
-      <label for="std_twin_rm_qty">Standard Twin Room:</label>
-      <select id="std_twin_rm_qty" name="std_twin_rm_qty">
+      <label for="std_t_rm_qty">Standard Twin Room:</label>
+      <select id="std_t_rm_qty" name="std_t_rm_qty">
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option></select
       ><br />
-      <label for="prm_doub_rm_qty">Premium Double Room:</label>
-      <select id="prm_doub_rm_qty" name="prm_doub_rm_qty">
+      <label for="sup_t_rm_qty"> Superior Twin Room:</label>
+      <select id="sup_t_rm_qty" name="sup_t_rm_qty">
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -45,9 +46,9 @@
       <input type="date" id="finish_date" name="finish_date" />
       <br /><br />
 
-      <label for="additional_requirements">Additional Requirements</label><br />
-      <textarea name="additional_requirements" rows="5" cols="35"></textarea
-      ><br /><br />
+      <!-- <label for="additional_requirements" >Additional Requirements</label><br />
+      <textarea name="additional_requirements" rows="5" cols="35" value="additionl requirements"></textarea -->
+      <br /><br />
 
       <input type="submit" value="Submit" />
     </form>

@@ -19,5 +19,11 @@
   "homepage": "https://github.com/kcthomasleung/Lakeside-Hotel-Website#readme",
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "pg": "^8.7.1"
   }
 }
