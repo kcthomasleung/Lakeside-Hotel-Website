@@ -60,7 +60,24 @@ h3{
     font-family: 'Raleway', sans-serif;
 }
 
+.bookings-table {
+    border-collapse: collapse;
+    width: 500px;
+    box-shadow: 0 0 1px #0F0906;
+    border-bottom: 1px solid;
+    margin-left: auto;
+    margin-right: auto;    
+}
 
+.bookings-table thead tr {
+    background: #B98B73;
+    color: #0F0906;
+}
+
+.bookings-table tbody tr {
+    color: #0F0906;
+    text-align: center;
+}
 
 #footer{
     background-color: #0F0906;

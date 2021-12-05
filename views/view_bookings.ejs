@@ -1,0 +1,36 @@
+<%- include('head')  %>
+<%- include('header') %>
+
+
+<h2> All Bookings </h2>
+
+<span class="results"> Number of Bookings: <%= count %> </span> 
+
+<br /><br />
+
+<table class="bookings-table">
+    <thead>
+        <tr>
+            <th>Booking Reference</th>
+            <th>Customer Number</th>
+            <th>Booking Cost</th>
+            <th>Outstanding</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>   
+        <% for (x in data) {  %>
+        <% let u = data[x]; %>
+        <tr>
+            <td><%= u.b_ref %></td>
+            <td><%= u.c_no %></td>
+            <td><%= u.b_cost %></td>
+            <td><%= u.b_outstanding %></td>
+            <td><%= u.b_notes %></td>
+        </tr>
+        <% }  %>
+    </tbody> 
+</table>
+
+
+<%- include('footer') %>
