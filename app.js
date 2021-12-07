@@ -8,6 +8,7 @@ const config = require("./config.js")[env];
 const Pool = require("pg").Pool;
 const pool = new Pool(config)
 const bodyParser = require("body-parser");
+
 const jsonParser = bodyParser.json();
 
 // static file directory
@@ -29,9 +30,9 @@ app.get("/bookings", (req, res) => {
   res.render("bookings");
 });
 
-app.get("/bookings/:ref", (req, res) => {
-  res.render("bookings");
-});
+// app.get("/bookings/:ref", (req, res) => {
+//   res.render("bookings");
+// });
 
 // See information for all the bookings
 app.get("/view_bookings", async (req, res) => {
@@ -120,7 +121,7 @@ app.get("/reception", async (req, res) => {
     }
 })
 
-
+// Version 1 of booking procedure
 // post request from the booking form in the bookings page --> insert information into database
 // app.post("/rooms", jsonParser, async (req, res) => {
 //   // store form parameters in variables
@@ -249,13 +250,14 @@ app.get("/reception", async (req, res) => {
 // );
 
 
-app.post("/rooms", jsonParser, async (req, res) => {
+// Version 2 of booking procedure
+app.post("/rooms", jsonParser, (req, res) => {
   // store form parameters in variables
   const body = req.body;
   const start_date = body.start_date;
   const finish_date = body.finish_date;
   // decalare a room prices variable that will be modified once a database query has been made
-  let room_prices 
+  let room_prices // a list of dictionaries containing price information for all four room types
   // take the body object and get the room key value pairs
   const rooms_list = Object.entries(body).slice(0,4) 
 
@@ -272,73 +274,78 @@ app.post("/rooms", jsonParser, async (req, res) => {
   //decalre a global available room list for later access
   let available_rooms_list = []
 
-  // for each type of requested rooms, check against the server and see if there are rooms available for the specified period
-  for (i in requested_rooms){
-    // take the list of list and access the first 5 characters of the first element of list i to obtain the room type
-    const room_type = requested_rooms[i][0].substring(0,5) // a string
-    const room_quantity = requested_rooms[i][1] // a string
+  // declare a function to check if requested rooms are available, if unavailbe, set's all_rm_available to false and send response to notify client
+  const checkDB = async () =>{
+      // for each type of requested rooms, check against the server and see if there are rooms available for the specified period
+      requested_rooms.forEach( async list => {
+// take the list of list and access the first 5 characters of the first element of list i to obtain the room type
+        const room_type = list[0].substring(0,5) // a string
+        const room_quantity = list[1] // a string
 
-    try{
-      const pool = new Pool(config)
-      const client = await pool.connect();
-      const q = `select * from room where r_class='${room_type}';
-      select r.r_no
-      from  room r full join roombooking rb 
-      on rb.r_no = r.r_no
-      where r_class='${room_type}' 
-        and checkin between '${start_date}' and '${finish_date}'
-        and checkout between '${start_date}' and '${finish_date}'
-      group by r.r_no
-      order by r.r_no;
-      select * from rates`;
-      await client.query(q, (err, results) => {
-        if (err) { // error handling
-          console.log(err.stack);
-          errors = err.stack.split(" at ");
-          res.json({
-            message:
-              "Sorry something went wrong! The data has not been processed " +
-              errors[0],
-          });
-        } else {
-          client.release();
-          // push all the rooms of the specified class into a list
-          const all_rooms = []
-          for (i in results[0].rows){
-            all_rooms.push(results[0].rows[i].r_no)
-          }
-          // push all occupied rooms into a list
-          const occupied_rooms = []
-          for (i in results[1].rows){
-            occupied_rooms.push(results[1].rows[i].r_no)
-          }
-          // use all_rooms and occupied_rooms to find out available rooms (filtering duplicates)
-          const available_rooms = all_rooms.filter(val => !occupied_rooms.includes(val))
+        try{
+          const pool = new Pool(config)
+          const client = await pool.connect();
+          const q = `select * from room where r_class='${room_type}';
+          select r.r_no
+          from  room r full join roombooking rb 
+          on rb.r_no = r.r_no
+          where r_class='${room_type}' 
+            and checkin between '${start_date}' and '${finish_date}'
+            and checkout between '${start_date}' and '${finish_date}'
+          group by r.r_no
+          order by r.r_no;
+          select * from rates`;
+          await client.query(q, (err, results) => {
+            if (err) { // error handling
+              console.log(err.stack);
+              errors = err.stack.split(" at ");
+              res.json({
+                message:
+                  "Sorry something went wrong! The data has not been processed " +
+                  errors[0],
+              });
+            } else {
+              client.release();
+              // push all the rooms of the specified class into a list
+              const all_rooms = []
+              for (i in results[0].rows){
+                all_rooms.push(results[0].rows[i].r_no)
+              }
+              // push all occupied rooms into a list
+              const occupied_rooms = []
+              for (i in results[1].rows){
+                occupied_rooms.push(results[1].rows[i].r_no)
+              }
+              // use all_rooms and occupied_rooms to find out available rooms (filtering duplicates)
+              const available_rooms = all_rooms.filter(val => !occupied_rooms.includes(val))
 
-          // push the available_rooms list to the global aggregate list of available rooms for all types of rooms
-          available_rooms_list.push(available_rooms)
-          console.log('bye')
-          console.log(available_rooms_list)
+              // push the available_rooms list to the global aggregate list of available rooms for all types of rooms
+              available_rooms_list.push(available_rooms)
 
-          // if the number of available rooms are less than the requested amount of rooms, send response to client saying rooms are unavailable
-          if (available_rooms.length < room_quantity){
-            all_rm_available = false
-            res.send("The rooms you selected are unavailable for the selected dates. Please try selecting other rooms or other dates.")
-          } 
-          // update the room_prices variable by assigning it to the query result
-          room_prices = results[2].rows
+              // if the number of available rooms are less than the requested amount of rooms, send response to client saying rooms are unavailable
+              if (available_rooms.length < room_quantity){
+                all_rm_available = false
+                res.send("The rooms you selected are unavailable for the selected dates. Please try selecting other rooms or other dates.")
+              } 
+              // update the room_prices variable by assigning it to the query result
+              room_prices = results[2].rows
+            }
+          })
         }
-      })
+        catch (e) {
+          console.log(e)
+        }
+      }) 
     }
-    catch (e) {
-      console.log(e)
-    }
-  }
+  
+  // declare funciton to insert the requested rooms into the database. 
+  const insert = async () =>{
   // if all the requested rooms are available, insert bookings into database tables
   if(all_rm_available == true){
     for (i in requested_rooms){
       const room_type = requested_rooms[i][0].substring(0,5) // a string
       const room_quantity = requested_rooms[i][1] // a string
+
 
       // calculate the number of nights the customer is staying
       const date1 = new Date(start_date)
@@ -348,50 +355,56 @@ app.post("/rooms", jsonParser, async (req, res) => {
       
      // calculate the total cost of the stay
       let price
-      for (i in room_prices){
-        if (room_prices[i].r_class == room_type){
-          price = room_prices[i].price
+      for (obj in room_prices){
+        if (room_prices[obj].r_class == room_type){
+          price = room_prices[obj].price
         }
       }
       // run function
       const total_cost = price*nights
 
-      console.log('hello')
-
       // for each type of room requested, insert into tables (room_quantity) amout of times
       for (let insert = 0; insert < Number(room_quantity); insert++){
-        // console.log(available_rooms_list)
-      //   try{
-      //     const client = await pool.connect();
-      //     const q = `select * from room where r_class='${room_type}';
-      //     DO $$
-      //     declare refno integer;
-      //     begin
-      //       insert into booking (b_cost, b_outstanding, b_notes) values (${total_cost}, ${total_cost}, '') returning b_ref into refno;
-      //       insert into roombooking values(${available_rooms[0]}, refno,'${start_date}','${finish_date}');
-      //     end $$;`
-      //     await client.query(q, (err, results) => {
-      //       if (err) { // error handling
-      //         console.log(err.stack);
-      //         errors = err.stack.split(" at ");
-      //         res.json({
-      //           message:
-      //             "Sorry something went wrong! The data has not been processed " +
-      //             errors[0],
-      //         });
-      //       } else {
-      //         console.log("Successfully Inserted items")
-      //       }
-      //     })
-      // }
-      // catch (e){
-      //   console.log(e)
-      // }
+        try{
+          const client = await pool.connect();
+          const q = `select * from room where r_class='${room_type}';
+          DO $$
+          declare refno integer;
+          begin
+            insert into booking (b_cost, b_outstanding, b_notes) values (${total_cost}, ${total_cost}, '') returning b_ref into refno;
+            insert into roombooking values(${available_rooms_list[i][i]}, refno,'${start_date}','${finish_date}');
+          end $$;`
+          await client.query(q, (err, results) => {
+            if (err) { // error handling
+              console.log(err.stack);
+              errors = err.stack.split(" at ");
+              res.json({
+                message:
+                  "Sorry something went wrong! The data has not been processed " +
+                  errors[0],
+              });
+            } else {
+              console.log("Successfully Inserted items")
+            }
+          })
+      }
+      catch (e){
+        console.log("Hello, I am the error: " + e)
+      }
       }
     }
   }
   }
+  // check againt the database first to see if the requested rooms are availble
+  checkDB()
+
+  // using timeout because I could not find a solution to stop insert() running before check() function has finished running
+  setTimeout(() => {
+    insert()
+  }, 1000) // waits one second before executing insert() 
+  }
 );
+
 
 
 // post request to change the room status
