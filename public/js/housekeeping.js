@@ -1,5 +1,3 @@
-
-
 // get an array of room status td elements
 const room_status_elements = document.getElementsByClassName("room_status")
 const submit_button = document.querySelector("#submit-button")

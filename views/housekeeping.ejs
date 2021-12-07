@@ -8,30 +8,7 @@
 
 <br /><br />
 
-<table class="bookings-table">
-    <thead>
-        <tr>
-            <th>Room Number</th>
-            <th>Room Status</th>
-            <th>Notes</th>
-
-        </tr>
-    </thead>
-    <tbody>   
-        <% for (x in data) {  %>
-        <% let u = data[x]; %>
-        <tr>
-            <td class="room_no"><%= u.r_no %></td>
-            <td class="room_status"><%= u.r_status %></td>
-            <td><%= u.r_notes %></td>
-        </tr>
-        <% }  %>
-    </tbody> 
-</table>
-
-<button id="submit-button">Submit Selction</button>
-
-<p class="server-response"></p>
+<%- include('rooms_table') %>
 
 
 
