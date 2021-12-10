@@ -6,8 +6,8 @@ const PORT = 5000;
 const path = require('path') 
 const config = require("./config.js")[env];
 const Pool = require("pg").Pool;
-const pool = new Pool(config)
 const bodyParser = require("body-parser");
+const { json } = require("express/lib/response");
 
 const jsonParser = bodyParser.json();
 
@@ -30,6 +30,10 @@ app.get("/bookings", (req, res) => {
   res.render("bookings");
 });
 
+// render the payment page
+app.get("/payment", (req, res) => {
+  res.render("payment_form");
+});
 // app.get("/bookings/:ref", (req, res) => {
 //   res.render("bookings");
 // });
@@ -37,6 +41,7 @@ app.get("/bookings", (req, res) => {
 // See information for all the bookings
 app.get("/view_bookings", async (req, res) => {
   try{
+    const pool = new Pool(config)
     const client = await pool.connect();
     const q = "select * from booking;";
     await client.query(q, (err, results) => {
@@ -66,6 +71,7 @@ app.get("/view_bookings", async (req, res) => {
 // View checked out rooms
 app.get("/housekeeping", async (req, res) => {
   try{
+    const pool = new Pool(config)
     const client = await pool.connect();
     const q = "select * from room where r_status='C';";
     await client.query(q, (err, results) => {
@@ -95,6 +101,7 @@ app.get("/housekeeping", async (req, res) => {
 // view all rooms
 app.get("/reception", async (req, res) => {
   try{
+    const pool = new Pool(config)
     const client = await pool.connect();
     const q = "select * from room;";
     await client.query(q, (err, results) => {
@@ -274,11 +281,14 @@ app.post("/rooms", jsonParser, (req, res) => {
   //decalre a global available room list for later access
   let available_rooms_list = []
 
+  //declare a boolean variable to determine whether to send a failure of success response back to the client
+  let response_Ok = false
+
   // declare a function to check if requested rooms are available, if unavailbe, set's all_rm_available to false and send response to notify client
   const checkDB = async () =>{
       // for each type of requested rooms, check against the server and see if there are rooms available for the specified period
       requested_rooms.forEach( async list => {
-// take the list of list and access the first 5 characters of the first element of list i to obtain the room type
+      // take the list of list and access the first 5 characters of the first element of list i to obtain the room type
         const room_type = list[0].substring(0,5) // a string
         const room_quantity = list[1] // a string
 
@@ -366,6 +376,7 @@ app.post("/rooms", jsonParser, (req, res) => {
       // for each type of room requested, insert into tables (room_quantity) amout of times
       for (let insert = 0; insert < Number(room_quantity); insert++){
         try{
+          const pool = new Pool(config)
           const client = await pool.connect();
           const q = `select * from room where r_class='${room_type}';
           DO $$
@@ -385,11 +396,13 @@ app.post("/rooms", jsonParser, (req, res) => {
               });
             } else {
               console.log("Successfully Inserted items")
+              response_Ok = true
             }
           })
       }
       catch (e){
         console.log("Hello, I am the error: " + e)
+        response_Ok = false
       }
       }
     }
@@ -401,7 +414,13 @@ app.post("/rooms", jsonParser, (req, res) => {
   // using timeout because I could not find a solution to stop insert() running before check() function has finished running
   setTimeout(() => {
     insert()
-  }, 1000) // waits one second before executing insert() 
+  }, 500) // waits one second before executing insert() 
+  setTimeout(() => {
+    // if everything was properly inserted, response_Ok should be true --> send response back to client
+    if (response_Ok == true){
+      res.send("Booking Successful")
+    }
+  }, 1000)
   }
 );
 
@@ -415,6 +434,7 @@ app.post("/change_status", jsonParser, async(req, res) => {
 
   // update the room status on the database
   try{
+    const pool = new Pool(config)
     const client = await pool.connect();
     const q = `UPDATE room SET r_status = '${status}' WHERE r_no = ${room_number};`;
     await client.query(q, (err, results) => {
@@ -439,6 +459,56 @@ app.post("/change_status", jsonParser, async(req, res) => {
     }
 })
 
+// post request from the payment page to add customer information to the database
+app.post("/customer_info", jsonParser, async(req, res) => {
+  // define variables for all cusomer info
+  const full_name = req.body.full_name
+  const email = req.body.email
+  const card_no = req.body.card_no
+  const billing_add = req.body.billing_add
+  const card_type = req.body.card_type
+  const ex_month = req.body.ex_month
+  const ex_year = req.body.ex_year
+  const additional_requirem0ents = req.body.additional_requirements
+
+  // combine ex_month and ex_year to make card expiry
+  const c_cardexp = `${ex_month}/${ex_year}`
+
+  // insert info into database
+  try{
+    const pool = new Pool(config)
+    const client = await pool.connect();
+    const q = `insert into customer values (
+            (SELECT COALESCE(MAX(c_no),0) FROM customer) + 1,
+            '${full_name}',
+            '${email}',
+            '${billing_add}',
+            '${card_type}',
+            '${c_cardexp}',
+            '${card_no}'
+    )`
+    await client.query(q, (err, results) => {
+      if (err) { // error handling
+        console.log(err.stack);
+        errors = err.stack.split(" at ");
+        res.json({
+          message:
+            "Sorry something went wrong! The data has not been processed " +
+            errors[0],
+        });
+      } else {
+        console.log("Successfully Inserted items")
+        response_Ok = true
+      }
+    })
+}
+catch (e){
+  console.log("Hello, I am the error: " + e)
+  response_Ok = false
+}
+})
+
 app.listen(PORT, () => {
   console.log(`Server running on port: http://localhost:${PORT}`);
 });
+

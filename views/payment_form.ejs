@@ -1,0 +1,62 @@
+<%- include('head')  %>
+<script src="./js/payment.js" defer></script>
+<%- include('header') %>
+
+<body>
+  <h1>Payment Information</h1>
+  <fieldset>
+    <form id="payment_form">
+        <label for="full_name">Full Name*: </label>
+        <input type="text" id="full_name" name="full_name" placeholder="Full Name" required><br /><br />
+
+        <label for="email"> Email*: </label>
+        <input type="email" name="email" id="email" placeholder="Email Address" required><br /><br />
+        
+        <label for="card_no"> Card Number*: </label>
+        <input type="text" name="card_no" id="card_no" required><br /><br />
+
+        <label for="billing_add"> Billing Address*: </label>
+        <input type="text" name="billing_add" id="billing_add" required><br /><br />
+
+        <label> Card Type*: </label><br>
+        <input type="radio" name="card_type" value="MC" id="masterc" checked="checked">
+        <label for="masterc">Master Card</label><br>
+        <input type="radio" name="card_type" value="V" id="visa">
+        <label for="visa">Visa</label><br><br />
+
+        <label for="css">Expiry Date</label><br>
+        <select name="ex_date" id="ex_month">
+            <option value="01">Jan</option>
+            <option value="02">Feb</option>
+            <option value="03">Mar</option>
+            <option value="04">Apr</option>
+            <option value="05">May</option>
+            <option value="06">Jun</option>
+            <option value="07">Jul</option>
+            <option value="08">Aug</option>
+            <option value="09">Sep</option>
+            <option value="10">Oct</option>
+            <option value="11">Nov</option>
+            <option value="12">Dec</option>
+          </select>
+          <select name="ex_date" id="ex_year">
+            <option value="21">2021</option>
+            <option value="22">2022</option>
+            <option value="23">2023</option>
+            <option value="24">2024</option>
+            <option value="25">2025</option>
+            <option value="26">2026</option>
+            <option value="27">2027</option>
+          </select><br><br />
+
+        <label for="additional_requirements"> Additional Requirements For The Booking: </label><br />
+        <textarea name="additional_requirements" id="additional_requirements" cols="30" rows="10"></textarea>
+      <br /><br />
+      <br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </fieldset>
+
+  <%- include('footer') %>
+
