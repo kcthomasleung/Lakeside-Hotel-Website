@@ -14,6 +14,12 @@ async function onSubmit(e) {
   const ex_year = ex_year_t.options[ex_year_t.selectedIndex].value
   const additional_requirements = document.querySelector('#additional_requirements').value;
 
+  // validate card number format
+  if(card_no.length != 16 || isNaN(card_no)){
+      alert("Card number must be 16 digits")
+      return
+  }
+
   const message = {
     full_name: full_name,
     email: email,
