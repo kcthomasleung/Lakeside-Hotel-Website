@@ -7,7 +7,7 @@ const path = require('path')
 const config = require("./config.js")[env];
 const Pool = require("pg").Pool;
 const bodyParser = require("body-parser");
-const { json } = require("express/lib/response");
+const { json, jsonp } = require("express/lib/response");
 
 const jsonParser = bodyParser.json();
 
@@ -34,6 +34,11 @@ app.get("/bookings", (req, res) => {
 app.get("/payment", (req, res) => {
   res.render("payment_form");
 });
+
+// render the confirmation page
+app.get("/confirmation", (req, res) => {
+  res.render("confirmation")
+})
 // app.get("/bookings/:ref", (req, res) => {
 //   res.render("bookings");
 // });
@@ -120,6 +125,73 @@ app.get("/reception", async (req, res) => {
         count = results.rows.length;
         // res.json({ results: JSON.stringify(data), rows: count });
         res.render('reception', {data:data, count:count})
+      }
+      });
+    } 
+    catch (e) {
+      console.log(e);
+    }
+})
+
+// View all customer booking records
+app.get("/customer_bookings", async (req, res) => {
+  try{
+    const pool = new Pool(config)
+    const client = await pool.connect();
+    const q = `select 
+    c.c_no, c_name, c_email, c_address, c_cardtype, c_cardexp, c_cardno, 
+    b.b_ref, b_cost, b_outstanding, b_notes, r_no, checkin, checkout
+    from customer c join booking b on c.c_no=b.c_no join roombooking r on r.b_ref=b.b_ref`;
+    await client.query(q, (err, results) => {
+      if (err) { // error handling
+        console.log(err.stack);
+        errors = err.stack.split(" at ");
+        res.json({
+          message:
+            "Sorry something went wrong! The data has not been processed " +
+            errors[0],
+        });
+      } else {
+        client.release();
+        data = results.rows;
+        count = results.rows.length;
+        // res.json({ results: JSON.stringify(data), rows: count });
+        res.render('customer_bookings', {data:data, count:count})
+      }
+      });
+    } 
+    catch (e) {
+      console.log(e);
+    }
+})
+
+// View specific customer booking records
+app.get("/customer_bookings/:customer_name", async (req, res) => {
+  const routeParams = req.params;
+	const customer_name = routeParams.customer_name
+  try{
+    const pool = new Pool(config)
+    const client = await pool.connect();
+    const q = `select 
+    c.c_no, c_name, c_email, c_address, c_cardtype, c_cardexp, c_cardno, 
+    b.b_ref, b_cost, b_outstanding, b_notes, r_no, checkin, checkout
+    from customer c join booking b on c.c_no=b.c_no join roombooking r on r.b_ref=b.b_ref
+    where c_name='${customer_name}'`;
+    
+    await client.query(q, (err, results) => {
+      if (err) { // error handling
+        console.log(err.stack);
+        errors = err.stack.split(" at ");
+        res.json({
+          message:
+            "Sorry something went wrong! The data has not been processed " +
+            errors[0],
+        });
+      } else {
+        client.release();
+        data = results.rows
+        count = results.rows.length;
+        res.json({ results: data, rows: count });
       }
       });
     } 
@@ -395,7 +467,7 @@ app.post("/rooms", jsonParser, (req, res) => {
                   errors[0],
               });
             } else {
-              console.log("Successfully Inserted items")
+              console.log("Successfully inserted booking into booking and roombooking tables")
               response_Ok = true
             }
           })
@@ -459,6 +531,40 @@ app.post("/change_status", jsonParser, async(req, res) => {
     }
 })
 
+// post request from the reception page to change the outstanding balance of a booking
+app.post("/change_outstanding", jsonParser, async(req, res) => {
+  const b_ref = req.body.b_ref
+
+  // change the booking with specified b_ref 's outstanding balance to 0
+  try{
+    const pool = new Pool(config)
+    const client = await pool.connect();
+    const q = `UPDATE booking SET b_outstanding = 0 WHERE b_ref = ${b_ref};`;
+    await client.query(q, (err, results) => {
+      if (err) { // error handling
+        console.log(err.stack);
+        errors = err.stack.split(" at ");
+        res.json({
+          message:
+            "Sorry something went wrong! The data has not been processed " +
+            errors[0],
+        });
+      } else {
+        client.release();
+        res.json({
+          message:"Update Successful"
+        })
+      }
+      });
+    } 
+    catch (e) {
+      console.log(e);
+    }
+
+})
+
+
+
 // post request from the payment page to add customer information to the database
 app.post("/customer_info", jsonParser, async(req, res) => {
   // define variables for all cusomer info
@@ -469,7 +575,7 @@ app.post("/customer_info", jsonParser, async(req, res) => {
   const card_type = req.body.card_type
   const ex_month = req.body.ex_month
   const ex_year = req.body.ex_year
-  const additional_requirem0ents = req.body.additional_requirements
+  const additional_requirements = req.body.additional_requirements
 
   // combine ex_month and ex_year to make card expiry
   const c_cardexp = `${ex_month}/${ex_year}`
@@ -485,8 +591,13 @@ app.post("/customer_info", jsonParser, async(req, res) => {
             '${billing_add}',
             '${card_type}',
             '${c_cardexp}',
-            '${card_no}'
-    )`
+            '${card_no}');
+            update booking 
+            set c_no=(SELECT COALESCE(MAX(c_no),0) 
+            FROM customer) 
+            where c_no is NULL;
+            update booking set b_notes='${additional_requirements}' 
+            where c_no=(SELECT COALESCE(MAX(c_no),0) FROM customer)`
     await client.query(q, (err, results) => {
       if (err) { // error handling
         console.log(err.stack);
@@ -497,8 +608,8 @@ app.post("/customer_info", jsonParser, async(req, res) => {
             errors[0],
         });
       } else {
-        console.log("Successfully Inserted items")
-        response_Ok = true
+        console.log("Successfully inserted customer info and updated booking table")
+        res.send("Successful")
       }
     })
 }
@@ -507,6 +618,8 @@ catch (e){
   response_Ok = false
 }
 })
+
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port: http://localhost:${PORT}`);
