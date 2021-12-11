@@ -2,13 +2,27 @@
 <script src="./js/reception.js" defer></script>
 <%- include('header') %>
 
-<h1> Rooms </h1>
+<div class="rooms_availability">
+    <h1> Rooms Availability</h1>
+    <span class="results"> Number of rooms: <%= data.length %> </span> 
+    <br /><br />
+    <%- include('rooms_table') %> <br /><br />
+</div>
 
-<span class="results"> Number of rooms: <%= data.length %> </span> 
+<div class="search_customer_info">
+    <h2>Search Customer Info</h2>
+    <form id="search_customer_form">
+        <label for="customer_name">Customer Name: </label>
+        <input type="email" name="customer_name" id="customer_name">
 
-<br /><br />
+        <input type="submit" value="Search" id="search-button">
+    </form><br /><br />
 
-<%- include('rooms_table') %>
+    <table id="customer_info_table">
+    </table><br /><br />
+    <button class="confirm_button">Confirm Changes</button>
+</div><br /><br />
+
 
 
 <%- include('footer') %>

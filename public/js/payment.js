@@ -25,8 +25,6 @@ async function onSubmit(e) {
     additional_requirements: additional_requirements
   };
 
-  console.log(message)
-
   const serializedMessage = JSON.stringify(message);
 
   const fetchOptions = {
@@ -41,18 +39,18 @@ async function onSubmit(e) {
   // send post request to the server and store the promise in a variable
   const result = await fetch("http://localhost:5000/customer_info", fetchOptions);
   
-//   // get the text of the response and store it in a variable
-//   const text = await result.text();
-//   if (text == "Booking Successful"){
-//     // if the server response is successful --> bring the client to the payments page
-//     window.location.href="/payment"
-//   } else{
-//     // else, print the response
-//     console.log(text)
-//     const div = document.createElement("div");
-//     div.innerHTML = text;
-//     document.body.appendChild(div);
-//   }
+  // get the text of the response and store it in a variable
+  const text = await result.text();
+  if (text == "Successful"){
+    // if the server response is successful --> bring the client to the booking confirmation page
+    window.location.href="/confirmation"
+  } else{
+    // else, print the response
+    console.log(text)
+    const div = document.createElement("div");
+    div.innerHTML = text;
+    document.body.appendChild(div);
+  }
 
 }
 
