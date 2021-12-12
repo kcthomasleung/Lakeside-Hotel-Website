@@ -1,0 +1,140 @@
+<%- include('head') %>
+
+<script src ="./attractions.js" defer></script>
+<%- include('header') %>
+
+<main>
+    <h2>Places to visit...</h2>
+    
+    <h3 class = "attractionType">Cafes'</h3>
+  
+  <section id = "row-container">
+
+    <div class = "tab">
+      <button id ="JS-tab1" class = "Name">Alchemista</button>
+      <img class = "pop" src = "./images/Alchemista.jpeg" alt = "Alchemist cafe">
+    </div>
+
+    <div class = "tab">
+      <button id = "JS-tab2" class = "Name">The Bicycle Shop</button>
+      <img class = "pop" src = "./images/bicycle_shop.jpeg" alt = "Bicycle-Shop cafe">
+    </div>
+
+    <div class = "tab">
+      <button class = "Name tab3">Re.Source</button>
+      <img class = "pop" src = "./images/re-source.jpeg" alt = "Re-Source cafe">
+    </div>
+
+    <div class = "tab">
+      <button class = "Name tab4">No.33</button>
+      <img class = "pop" src = "./images/No33Cafe-Norwich-UK.jpeg" alt = "No.33 cafe">
+    </div>
+  </section>
+
+
+
+
+  <h3 class = "attractionType">Independent Shops</h3>
+  <section id = "row-container">
+    <div>
+      <button class = "Name">Working Title</button>
+      <img class = "pop" src = "./images/working-title.jpeg" alt = "Working title shop">
+    </div>
+    <div>
+      <button class = "Name">Lisa Angel</button>
+      <img class = "pop" src = "./images/lisa-anbel.jpeg" alt = "Lisa Angel shop">
+    </div>
+    <div>
+      <button class = "Name">DrugStore Skate</button>
+      <img class = "pop" src = "./images/drugstore.jpeg" alt = "Drugstore Skate shop">
+    </div>
+    <div>
+      <button class = "Name">Elements</button>
+      <img class = "pop" src = "./images/elements.jpeg" alt = "Elements clothing shop">
+    </div>
+  </section>
+
+
+  <h3 class = "attractionType">Restaurants</h3>
+  <section id = "row-container">
+    <div>
+      <button class = "Name">Giggling Squid</button>
+      <img class = "pop" src = "./images/giggling-squid.jpeg" alt = "Giggling Squid Thai restaurant">
+    </div>
+    <div>
+      <button class = "Name">Brick Pizza</button>
+      <img class = "pop" src = "./images/brick.jpeg" alt = "Wood fired pizza restaurant">
+    </div>
+    <div>
+      <button class = "Name">Gonzos</button>
+      <img class = "pop" src = "./images/gonzos.jpeg" alt = "Gonzos restaurant">
+    </div>
+    <div>
+      <button class = "Name">Turtle Bay</button>
+      <img class = "pop" src = "./images/Turtle Bay Front .jpeg" alt = "Turtle Bay caribbean restaurant">
+    </div>
+  </section>
+
+
+
+<!-- Alchemista cafe pop-up -->
+  <div id = "Alchemista-info" class = "AlchemistaInfo">
+    <div class = "extra-info">
+      <span class = "JS-close">&times;</span>
+      <p>
+        <a href="https://www.alchemistacoffee.co.uk/" target="_blank" class = "Alchemist-web">Visit the Alchemist website</a>
+        <br>
+        <br>
+        <u>About:</u><br>
+        <br>
+        Alchemista, located on St Gregory’s Alley, has an on-trend ‘Steampunk’ theme that is designed to bring 
+        together people from all walks of life, to drink the best coffee in the best surroundings. Taste, quality 
+        and sustainability all feature strongly. Their inspirational 7-hour slow-drip, cold brew coffee ‘elixir’ 
+        is made using ‘Mad Professor’ Peter Harris’s Steampunk coffee machine, the only one of its kind in the eastern region.<br>
+        <br>
+        <u>Opening hours:</u><br>
+        Mon – Sat: 8am – 8pm<br>
+        Sun: 10am – 4pm<br>
+        <br>
+        <u>Address:</u><br>
+        4St Gregory’s Alley,<br>
+        Norwich,<br>
+        NR2 1ER</p>
+        <img class = "alchemist-map" src = "./images/Alchemist map.png">
+    </div>
+  </div>
+
+<!-- The Bicycle shop cafe pop-up -->
+  <div id = "BicycleShop-info" class = "BicycleShopInfo">
+    <div class = "extra-info2">
+      <span class = "JS-close2">&times;</span>
+      <p>
+        <a href="https://www.thebicycleshopcafe.com/" target="_blank" class = "Bicycle-web">Visit The Bicycle Shop's website</a>
+        <br>
+        <br>
+        <u>About:</u><br>
+        <br>
+        The Bicycle Shop began in 2009 on St Benedicts Street - the heart of The Norwich Lanes.<br>
+        Our name references the history of the building as a bicycle sale and repair shop for 82 years. <br>
+        From morning until late at night we operate on three floors filled with art, plants and mismatched furniture.<br>
+        We have created an environment we hope you'll love to linger in.<br>
+        <br>
+        <u>Opening hours:</u><br>
+        Fri – Sat: 10am – 10pm<br>
+        Sun & Mon: 10am – 4pm<br>
+        <br>
+        <u>Address:</u><br>
+        17 St Benedicts Street,<br>
+        Norwich,<br>
+        NR2 4PE</p>
+        <img class = "BicycleShop-map" src = "./images/BicycleShop.png">
+    </div>
+  </div>
+  
+  <div id = "overlay"></div>
+</main>
+
+
+
+
+<%- include('footer') %>
