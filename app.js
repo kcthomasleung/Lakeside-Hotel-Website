@@ -2,9 +2,9 @@ const env = process.env.NODE_ENV || "development"; // for app.js to connect to p
 const express = require("express");
 const app = express();
 const ejs = require("ejs");
-const PORT = 5001;
+const PORT = 5000;
 const path = require('path') 
-// const config = require("./config.js")[env];
+const config = require("./config.js")[env];
 const Pool = require("pg").Pool;
 const bodyParser = require("body-parser");
 const { json, jsonp } = require("express/lib/response");
@@ -24,6 +24,11 @@ app.set("view engine", "ejs");
 app.get("/", function (req, res) {
   let title = "Lakeside Hotel";
   res.render("index", { title: title });
+});
+
+// render rooms page
+app.get("/rooms", (req, res) => {
+  res.render("rooms");
 });
 
 // render the bookings poge when the URL/bookings is requested
@@ -51,9 +56,6 @@ app.get("/contact", (req, res) => {
   res.render("contact")
 })
 
-// app.get("/bookings/:ref", (req, res) => {
-//   res.render("bookings");
-// });
 
 // See information for all the bookings
 app.get("/view_bookings", async (req, res) => {
