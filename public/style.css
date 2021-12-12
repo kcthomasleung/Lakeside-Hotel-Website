@@ -1,8 +1,8 @@
 
 
-/* * {
+* {
     outline: solid 1px red;
-} */
+}
 
 
 
@@ -303,13 +303,6 @@ h2{
     border: 0.2rem solid black;
 }
 
-
-
-
-
-
-
-
 /* ScreenSize for iphone X */
 
 @media screen and (min-device-width: 375px) 
@@ -379,37 +372,46 @@ h2{
       
 };
 
-/* .rooms_container{
+.rooms_container{
     display: flex;
-    position: relative;
-} */
+    flex-direction: row;
+    /* margin: 1rem; */
+}
 
 .containerA {
     position: relative;
-    left: 5%;
     margin: 1rem;
-    display: flex;
-    background-color: rgba(196, 196, 196, 0.8);
-    width: 50%;
+    width: 45%;
     border: 0.2rem solid black;
-    position: absolute;
-    top: 40px;
-    left: 290px;
+    display: flex;
+    flex-direction: column;
 }
 
-.containerA .r_left {
-    position: absolute;
+/* .containerA .r_left,.containerA .r_right {
     transition: 1.5s ease-in-out;
     display: block;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    margin: auto;
-    background-color: rgba(196, 196, 196, 0.8);
-    width: 50%;
+    width: 35%;
     border: 0.2rem solid black;
+    top: 3rem;
+    left: 50%;
+} */
+
+.containerA .r_left {
     position: absolute;
-    top: 40px;
-    left: 290px;
+    display: block;
+    width: 100%;
+    transition: 1.5s ease-in-out;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+
+    /* top: 1.1rem;
+    left: -1rem;
+    width: 35rem; */
 }
+/* .containerB img.r_left {
+    width: 10rem;
+} */
 
 .containerA .r_left:hover{
     clip-path: polygon(0 0%, 0% 0, 0% 0%, 0 0%);
@@ -418,35 +420,51 @@ h2{
 }
 .containerB {
     position: relative;
-    bottom: 24rem;
-    display: flex;
-    background-color: rgba(196, 196, 196, 0.8);
-    width: 50%;
+    margin: 1rem;
+    width: 45%;
     border: 0.2rem solid black;
-    position: absolute;
-    left: 290px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+
 }
 
-.containerB .r_right {
+ .containerB .r_left {
     position: absolute;
-    transition: 1s ease-in-out;
     display: block;
+    width: 100%;
+    transition: 1.5s ease-in-out;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
 
 }
+/* 
+.containerB .r_right {
+    position: absolute;
+    border: 0.2rem solid black;
 
-.containerB .r_right:hover{
+    bottom: 1rem;
+    left: 100%;
+    width: 35rem;
+} */
+
+.containerB .r_left:hover{
     clip-path: polygon(0 0%, 0% 0, 0% 0%, 0 0%);
     opacity: 0; 
 }
 
-.book-now{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
+/* .room_titles{
+    display: flex;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    background-color: transparent;
+    border: none;
+    border-top: 2px solid black;
+    border-bottom: 2px solid #0F0906;
+    bottom: 10%;
+    position: absolute;
+    font-size: 1.5rem;
+} */
 
 
 fieldset{ 
@@ -541,4 +559,27 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
     text-align: center;
     color: black;
     font-weight: bold;
+}
+
+
+.book-now{
+    display: flex;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    left: 45%;
+    background-color: transparent;
+    border: none;
+    border-top: 2px solid black;
+    border-bottom: 2px solid #0F0906;
+    cursor: pointer;
+    transition-duration: 3s;
+    transition-timing-function: ease-in-out;
+    bottom: 10%;
+    position: absolute;
+    font-size: 1.5rem;
+}
+
+.book-now:hover{
+    border-top: 0px;
+    border-bottom: 0px;
 }
