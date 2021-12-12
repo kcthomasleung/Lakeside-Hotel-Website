@@ -416,10 +416,12 @@ h2{
 .containerA {
     position: relative;
     margin: 1rem;
-    width: 45%;
+    width: 35.5%;
     border: 0.2rem solid black;
     display: flex;
     flex-direction: column;
+    bottom: 2.1rem;
+    left: 7%;
 }
 
 /* .containerA .r_left,.containerA .r_right {
@@ -451,14 +453,14 @@ h2{
 
 }
 .containerB {
-    position: relative;
+    position: absolute;
     margin: 1rem;
-    width: 45%;
+    width: 41%;
     border: 0.2rem solid black;
     left: 50%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 300px;
+    top: 15rem;
 }
 
  .containerB .r_left {
@@ -486,19 +488,65 @@ h2{
     opacity: 0; 
 }
 
-/* .room_titles{
+.room_titles{
     display: flex;
     text-align: center;
     font-family: 'Raleway', sans-serif;
     background-color: transparent;
     border: none;
-    border-top: 2px solid black;
+    /* border-top: 2px solid black; */
     border-bottom: 2px solid #0F0906;
-    bottom: 10%;
+    /* bottom: 10%; */
     position: absolute;
     font-size: 1.5rem;
-} */
+}
 
+#Art{
+    left: 18%;
+    bottom: 12%;
+}
+
+#Brt{
+    left: 68%;
+    bottom: 12%;
+
+}
+
+#Crt{
+    left: 39%;
+    border: none;
+    font-size: 1.2rem;
+    bottom: 14%;
+}
+
+#rooms_h2{
+    position: relative;
+    right: 2.2%;
+}
+
+.book-now{
+    display: flex;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    left: 43%;
+    background-color: transparent;
+    border: none;
+    border-top: 2px solid black;
+    border-bottom: 2px solid #0F0906;
+    cursor: pointer;
+    transition-duration: 3s;
+    transition-timing-function: ease-in-out;
+    bottom: 10%;
+    position: relative;
+    font-size: 1.5rem;
+    width: auto;
+    margin: 2px;
+}
+
+.book-now:hover{
+    border-top: 0px;
+    border-bottom: 0px;
+}
 
 fieldset{ 
     display: block;
@@ -594,27 +642,6 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
 }
 
 
-.book-now{
-    display: flex;
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
-    left: 45%;
-    background-color: transparent;
-    border: none;
-    border-top: 2px solid black;
-    border-bottom: 2px solid #0F0906;
-    cursor: pointer;
-    transition-duration: 3s;
-    transition-timing-function: ease-in-out;
-    bottom: 10%;
-    position: absolute;
-    font-size: 1.5rem;
-}
-
-.book-now:hover{
-    border-top: 0px;
-    border-bottom: 0px;
-}
   
 /* Attractions */
 
