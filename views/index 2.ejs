@@ -1,0 +1,42 @@
+<%- include('head') %>
+
+<body>
+  <script src="Slideshow.js"></script>
+  <header>
+    <img id="logo" src="./images/logo_(1).png" alt="Website_logo" />
+
+    <!-- Navigation bar at top of page -->
+    <nav class="navbar">
+      <a href="#">HOME</a>
+      <a href="">ROOMS</a>
+      <a href="">ATTRACTIONS</a>
+      <a href="">FACILITIES</a>
+      <a href="">CONTACT</a>
+    </nav>
+  </header>
+
+  <nav>
+    <h1>Welcome to the <%= title %></h1>
+  </nav>
+
+  <main>
+    <section id="flex-images">
+      <img class="images" src="./images/hotel1.jpeg" alt="Hotel room" />
+      <img class="images" src="./images/hotel2.jpeg" alt="Hotel room 2" />
+      <img class="images" src="./images/hotel3.jpeg" alt="Hotel room 3" />
+    </section>
+
+    <section class="description">
+      <h3>
+        The LakeSide Hotel is a beautifully located hotel in the heart of
+        Norwich city.
+      </h3>
+      <h3>
+        Norwich is a fantastic place to explore with many cute cobbled streets,
+        cozy coffee shops and ....
+      </h3>
+    </section>
+  </main>
+
+  <%- include('footer') %>
+</body>
