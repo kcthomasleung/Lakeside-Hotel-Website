@@ -4,7 +4,7 @@ const app = express();
 const ejs = require("ejs");
 const PORT = 5000;
 const path = require('path') 
-const config = require("./config.js")[env];
+// const config = require("./config.js")[env];
 const Pool = require("pg").Pool;
 const bodyParser = require("body-parser");
 const { json, jsonp } = require("express/lib/response");
@@ -34,6 +34,16 @@ app.get("/bookings", (req, res) => {
 // render the payment page
 app.get("/payment", (req, res) => {
   res.render("payment_form");
+});
+
+// render the payment page
+app.get("/rooms", (req, res) => {
+  res.render("rooms");
+});
+
+// render the fcailities page
+app.get("/facilities", (req, res) => {
+  res.render("facilities");
 });
 
 // render the confirmation page

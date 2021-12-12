@@ -448,6 +448,18 @@ h2{
 }
 
 
+
+fieldset{ 
+    display: block;
+    border-color: black;
+    position: relative;
+    /* top: 10rem; */
+    /* height: 10rem; */
+    border-right: none;
+    border-left: none;
+
+}
+
 /* bookings section */
 #bookings_logo{
     position: absolute;
@@ -464,4 +476,69 @@ h2{
     position: relative;
     padding-left: 40%;
 
+}
+
+label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
+,#start_date, #finish_date {  
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+/* facilities styling */
+
+#title{
+    position: relative;
+    top: 0.5rem;
+    left: 4rem;
+
+}
+
+.picture {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+
+}
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.descriptive-text {
+    position: absolute;
+    bottom: 2rem;
+    opacity: 0;
+    transition: 0.5s;
+    color: white;
+    background: rgba(108, 122, 137, 0.7);
+    width: 100%;
+    text-align: center;
+}
+
+
+.picture:hover .descriptive-text{
+    opacity: 1;
+}
+
+.attractions_main {
+    position: relative;
+}
+
+.row {
+    padding: 10px;
+}
+
+.row .picture{
+    margin-top: 8px;
+    display: inline-block; 
+
+}
+
+.caption{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    color: black;
+    font-weight: bold;
 }
