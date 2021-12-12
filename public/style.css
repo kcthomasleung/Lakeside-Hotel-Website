@@ -341,7 +341,7 @@ h2{
         font-size: 150%;
         display: flex;
         /* min-width: 1500px; */
-        width: 1000px;
+        width: 100%;
         /* overflow: hidden; */
         flex-direction: column;
         }
@@ -379,11 +379,11 @@ h2{
     }
 
     .skyline{
-        width:1000px;
+        width:100%;
     }
 
     .left{
-        width:500px;
+        width:100%;
     }
 
 
