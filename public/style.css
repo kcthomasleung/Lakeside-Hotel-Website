@@ -4,6 +4,10 @@
 
 
 /* All Pages styling */
+a {
+    text-decoration: none;
+}
+
 #logo{
     position: absolute;
     width:150px;
