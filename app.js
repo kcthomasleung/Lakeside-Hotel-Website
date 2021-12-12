@@ -14,7 +14,7 @@ const jsonParser = bodyParser.json();
 
 // static file directory
 app.use(express.static(path.join(__dirname, "public"))); 
-// parse application/json
+// parse application/json 
 app.use(bodyParser.json()); 
 
 //set view engine to use ejs templates
@@ -31,6 +31,11 @@ app.get("/rooms", (req, res) => {
   res.render("rooms");
 });
 
+// render facilities page
+app.get("/facilities", (req, res) => {
+  res.render("facilities");
+});
+
 // render the bookings poge when the URL/bookings is requested
 app.get("/bookings", (req, res) => {
   res.render("bookings");
@@ -39,16 +44,6 @@ app.get("/bookings", (req, res) => {
 // render the payment page
 app.get("/payment", (req, res) => {
   res.render("payment_form");
-});
-
-// render the payment page
-app.get("/rooms", (req, res) => {
-  res.render("rooms");
-});
-
-// render the fcailities page
-app.get("/facilities", (req, res) => {
-  res.render("facilities");
 });
 
 // render the confirmation page
