@@ -334,28 +334,34 @@ h2{
   and (-webkit-min-device-pixel-ratio: 3){ 
 
 
+/* All */
 
+    #logo{
+        position: absolute;
+        display: block;
+        justify-content: center;
+        left: 30%;
+    }
 
     .navbar{
         background-color: #0F0906;
         font-size: 150%;
         display: flex;
-        /* min-width: 1500px; */
-        width: 100%;
-        /* overflow: hidden; */
+        width: 375px;
         flex-direction: column;
+        margin-top: 150px;
         }
 
 
     .navbar a {
         color: #C4C4C4;
-        text-align: center;
+        text-align: left;
         padding: 30px;
         position: relative;
         text-decoration: none; 
-        margin-left: 200px;
-        border-bottom: 1rem solid #C4C4C4;
-
+        margin-left: 10px;
+        border-left: 1rem solid #C4C4C4;
+        /* width: 55%; */
     }
     
     .navbar a:hover {
@@ -364,7 +370,6 @@ h2{
 
     body {
         display: flex;
-        min-height: 375vh;
         flex-direction: column;
         background: rgba(92, 105, 60, 0.5);
     }
@@ -373,17 +378,25 @@ h2{
         flex-grow: 1;
     }
     
+
+/* Homepage */
+
     h1{
-        font-size: larger;
-        text-align: right;
+        font-size: 50px;
+        text-align: center;
     }
 
     .skyline{
-        width:100%;
+        width:375px;
+        height: 200px;
+        border: 0.3rem solid black;
     }
 
     .left{
-        width:100%;
+        width:350px;
+        height: 200px;
+        margin-left: -277px;
+        margin-top: 200px;
     }
 
 
@@ -391,7 +404,14 @@ h2{
         background-color: #0F0906;
         color:#C4C4C4;
         padding: 2px 15px;
-        width: 1000px;
+        width: 375px;
+        margin-top: 300px;
     }
-      
+  
+    /* Attractions */
+
+    #row-container{
+        flex-direction: column;
+    }
+
 };
