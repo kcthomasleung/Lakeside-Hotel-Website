@@ -8,6 +8,7 @@ const config = require("./config.js")[env];
 const Pool = require("pg").Pool;
 const bodyParser = require("body-parser");
 const { json, jsonp } = require("express/lib/response");
+const req = require("express/lib/request");
 
 const jsonParser = bodyParser.json();
 
@@ -39,6 +40,11 @@ app.get("/payment", (req, res) => {
 app.get("/confirmation", (req, res) => {
   res.render("confirmation")
 })
+
+app.get("/attractions", (req, res) => {
+  res.render("attractions")
+})
+
 // app.get("/bookings/:ref", (req, res) => {
 //   res.render("bookings");
 // });
