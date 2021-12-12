@@ -305,6 +305,23 @@ h2{
 
 
 
+/* Contact Page */
+.contact_box{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 0.7rem solid black;
+    margin: auto;
+    background-color: rgba(196, 196, 196, 0.8);
+    width: 50%;
+}
+
+
+.contact_box .address, a{
+    position: relative;
+    text-align: center;
+}  
+
 
 
 

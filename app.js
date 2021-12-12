@@ -41,8 +41,14 @@ app.get("/confirmation", (req, res) => {
   res.render("confirmation")
 })
 
+// render the attractions page
 app.get("/attractions", (req, res) => {
   res.render("attractions")
+})
+
+// render the contact page
+app.get("/contact", (req, res) => {
+  res.render("contact")
 })
 
 // app.get("/bookings/:ref", (req, res) => {
