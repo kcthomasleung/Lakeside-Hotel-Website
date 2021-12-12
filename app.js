@@ -2,7 +2,7 @@ const env = process.env.NODE_ENV || "development"; // for app.js to connect to p
 const express = require("express");
 const app = express();
 const ejs = require("ejs");
-const PORT = 5000;
+const PORT = 5001;
 const path = require('path') 
 // const config = require("./config.js")[env];
 const Pool = require("pg").Pool;
@@ -51,8 +51,14 @@ app.get("/confirmation", (req, res) => {
   res.render("confirmation")
 })
 
+// render the attractions page
 app.get("/attractions", (req, res) => {
   res.render("attractions")
+})
+
+// render the contact page
+app.get("/contact", (req, res) => {
+  res.render("contact")
 })
 
 // app.get("/bookings/:ref", (req, res) => {
