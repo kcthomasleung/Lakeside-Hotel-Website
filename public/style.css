@@ -1,3 +1,12 @@
+
+
+/* * {
+    outline: solid 1px red;
+} */
+
+
+
+/* All Pages styling */
 #logo{
     position: absolute;
     width:150px;
@@ -7,9 +16,8 @@
 .navbar {
     background-color: #0F0906;
     justify-content: center;
-    width: 100%;
-    padding: 30px;
-    font-size: 150%;
+    padding: 30px 0px;
+    font-size: 30px;
     display: flex;
 }
 
@@ -18,11 +26,45 @@
     text-align: center;
     padding: 30px;
     position: relative;
+    text-decoration: none;
 }
 
 .navbar a:hover {
     color: #B98B73;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin:0px;
+    background: rgba(92, 105, 60, 0.5);
+}
+
+main{
+    flex-grow: 1;
+}
+
+#footer{
+    background-color: #0F0906;
+    color:#C4C4C4;
+    padding: 2px 15px;
+    margin-top: 50px;
+}
+
+
+
+
+
+
+/* HomePage */
+
+html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
 
 h1{
     font-family: 'Raleway', sans-serif;
@@ -30,35 +72,38 @@ h1{
     text-align: center;
 }
 
-body{
-    margin:0px;
-    background: rgba(92, 105, 60, 0.5);
-}
-
-#flex-images{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-bottom: 8%;
-}
-
-.images{
-    height: 200px;
-    width: 400px;
+.skyline{
+    width: 1400px;
+    height: 800px;
+    border: 2rem solid black;
 }
 
 .description{
+    position: relative;
+    text-align: center;
+}
+
+.left{
     margin: auto;
-    background-color: #C4C4C4;
+    background-color: rgba(196, 196, 196, 0.8);
     width: 50%;
     border: 0.2rem solid black;
+    position: absolute;
+    top: 40px;
+    left: 50px;
 }
 
 h3{
     text-align: center;
     font-family: 'Raleway', sans-serif;
 }
+
+
+
+
+
+
+/* Rooms Booking Page */
 
 .bookings-table {
     border-collapse: collapse;
@@ -79,12 +124,257 @@ h3{
     text-align: center;
 }
 
-#footer{
-    background-color: #0F0906;
-    color:#C4C4C4;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-    padding: 2px 15px;
-    margin-top: 20px;
+
+
+
+
+
+/* Attractions page */
+
+h2{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 3rem;
 }
+
+.attractionType{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    margin: 50px;
+    background-color: #C4C4C4;
+    border-radius: 5px;
+}
+
+#row-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
+    position: relative;
+}
+
+.Name{
+    position: absolute;   
+    background-color: rgba(92, 105, 60, 0.9);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 15px;
+    margin-top: 192px;
+    border-style: solid;
+    border-color: #C4C4C4;
+}
+
+
+.pop{
+    height: 200px;
+    width: 300px;
+    margin: 15px;
+    border: 0.5rem solid black;
+}
+
+
+
+
+
+
+/* Alchemist Pop-up*/
+
+.Alchemist-web{
+    color: white;
+}
+
+.AlchemistaInfo{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+    border: 0.2rem solid black;
+    /* background-color: #C4C4C4; */
+    background-color: rgba(92, 105, 60);
+    z-index: 10;
+    width: 700px;
+    height: 600px;
+    max-width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+    overflow-y: scroll;
+}
+
+
+.extra-info{
+    padding: 10px 5px;
+}
+
+
+.JS-close{
+    cursor: pointer;
+    border: 0.1rem solid black;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    float: right;
+    padding: 3px;
+}
+
+#overlay{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);
+    pointer-events: none;
+}
+
+.extra-info p{
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+
+.alchemist-map{
+    height: 300px;
+    width: 300px;
+    justify-content: center;
+    border: 0.2rem solid black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+/* Bicycle Shop Pop up */
+
+.Bicycle-web{
+    color: white;
+}
+
+.BicycleShopInfo{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+    border: 0.2rem solid black;
+    /* background-color: #C4C4C4; */
+    background-color: rgba(92, 105, 60);
+    z-index: 10;
+    width: 700px;
+    height: 600px;
+    max-width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+    overflow-y: scroll;
+}
+
+.JS-close2{
+    cursor: pointer;
+    border: 0.1rem solid black;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    float: right;
+    padding: 3px;
+}
+
+.extra-info2{
+    padding: 10px 5px;
+}
+
+.extra-info2 p{
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+
+.BicycleShop-map{
+    height: 300px;
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0.2rem solid black;
+}
+
+
+
+
+
+
+
+
+/* ScreenSize for iphone X */
+
+@media screen and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3){ 
+
+
+
+
+    .navbar{
+        background-color: #0F0906;
+        font-size: 150%;
+        display: flex;
+        /* min-width: 1500px; */
+        width: 1000px;
+        /* overflow: hidden; */
+        flex-direction: column;
+        }
+
+
+    .navbar a {
+        color: #C4C4C4;
+        text-align: center;
+        padding: 30px;
+        position: relative;
+        text-decoration: none; 
+        margin-left: 200px;
+        border-bottom: 1rem solid #C4C4C4;
+
+    }
+    
+    .navbar a:hover {
+        color: #B98B73;
+    }
+
+    body {
+        display: flex;
+        min-height: 375vh;
+        flex-direction: column;
+        background: rgba(92, 105, 60, 0.5);
+    }
+    
+    main{
+        flex-grow: 1;
+    }
+    
+    h1{
+        font-size: larger;
+        text-align: right;
+    }
+
+    .skyline{
+        width:1000px;
+    }
+
+    .left{
+        width:500px;
+    }
+
+
+    #footer{
+        background-color: #0F0906;
+        color:#C4C4C4;
+        padding: 2px 15px;
+        width: 1000px;
+    }
+      
+};
