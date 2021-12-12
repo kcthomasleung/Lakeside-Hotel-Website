@@ -378,3 +378,90 @@ h2{
     }
       
 };
+
+/* .rooms_container{
+    display: flex;
+    position: relative;
+} */
+
+.containerA {
+    position: relative;
+    left: 5%;
+    margin: 1rem;
+    display: flex;
+    background-color: rgba(196, 196, 196, 0.8);
+    width: 50%;
+    border: 0.2rem solid black;
+    position: absolute;
+    top: 40px;
+    left: 290px;
+}
+
+.containerA .r_left {
+    position: absolute;
+    transition: 1.5s ease-in-out;
+    display: block;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    margin: auto;
+    background-color: rgba(196, 196, 196, 0.8);
+    width: 50%;
+    border: 0.2rem solid black;
+    position: absolute;
+    top: 40px;
+    left: 290px;
+}
+
+.containerA .r_left:hover{
+    clip-path: polygon(0 0%, 0% 0, 0% 0%, 0 0%);
+    opacity: 0;
+
+}
+.containerB {
+    position: relative;
+    bottom: 24rem;
+    display: flex;
+    background-color: rgba(196, 196, 196, 0.8);
+    width: 50%;
+    border: 0.2rem solid black;
+    position: absolute;
+    left: 290px;
+}
+
+.containerB .r_right {
+    position: absolute;
+    transition: 1s ease-in-out;
+    display: block;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+
+}
+
+.containerB .r_right:hover{
+    clip-path: polygon(0 0%, 0% 0, 0% 0%, 0 0%);
+    opacity: 0; 
+}
+
+.book-now{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* bookings section */
+#bookings_logo{
+    position: absolute;
+    width: 15rem;
+    top: 20rem;
+    margin-left: 5%;
+    margin-right: 1%;
+    z-index: 1;
+    
+
+}
+
+#booking_form{
+    position: relative;
+    padding-left: 40%;
+
+}
