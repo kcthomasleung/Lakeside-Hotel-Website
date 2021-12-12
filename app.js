@@ -41,6 +41,16 @@ app.get("/payment", (req, res) => {
   res.render("payment_form");
 });
 
+// render the payment page
+app.get("/rooms", (req, res) => {
+  res.render("rooms");
+});
+
+// render the fcailities page
+app.get("/facilities", (req, res) => {
+  res.render("facilities");
+});
+
 // render the confirmation page
 app.get("/confirmation", (req, res) => {
   res.render("confirmation")

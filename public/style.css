@@ -1,8 +1,5 @@
 
 
-/* * {
-    outline: solid 1px red;
-} */
 
 
 
@@ -456,11 +453,250 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
         width: 375px;
         margin-top: 300px;
     }
-  
-    /* Attractions */
-
-    #row-container{
-        flex-direction: column;
-    }
-
+      
 };
+
+/* rooms css */
+
+.rooms_container{
+    display: flex;
+    flex-direction: row;
+    /* margin: 1rem; */
+}
+
+.containerA {
+    position: relative;
+    margin: 1rem;
+    width: 35.5%;
+    border: 0.2rem solid black;
+    display: flex;
+    flex-direction: column;
+    bottom: 2.1rem;
+    left: 7%;
+}
+
+/* .containerA .r_left,.containerA .r_right {
+    transition: 1.5s ease-in-out;
+    display: block;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    width: 35%;
+    border: 0.2rem solid black;
+    top: 3rem;
+    left: 50%;
+} */
+
+.containerA .r_left {
+    position: absolute;
+    display: block;
+    width: 100%;
+    transition: 1.5s ease-in-out;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /* left: -1rem; */
+    /* width: 35rem; */
+}
+/* .containerB img.r_left {
+    width: 10rem;
+} */
+
+.containerA .r_left:hover{
+    clip-path: polygon(0 0%, 0% 0, 0% 0%, 0 0%);
+    opacity: 0;
+
+}
+.containerB {
+    position: absolute;
+    margin: 1rem;
+    width: 41%;
+    border: 0.2rem solid black;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    top: 15rem;
+}
+
+ .containerB .r_left {
+    position: absolute;
+    display: block;
+    width: 100%;
+    transition: 1.5s ease-in-out;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /* top: 10rem; */
+
+
+}
+/* 
+.containerB .r_right {
+    position: absolute;
+    border: 0.2rem solid black;
+
+    bottom: 1rem;
+    left: 100%;
+    width: 35rem;
+} */
+
+.containerB .r_left:hover{
+    clip-path: polygon(0 0%, 0% 0, 0% 0%, 0 0%);
+    opacity: 0; 
+}
+
+.room_titles{
+    display: flex;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    background-color: transparent;
+    border: none;
+    /* border-top: 2px solid black; */
+    border-bottom: 2px solid #0F0906;
+    /* bottom: 10%; */
+    position: absolute;
+    font-size: 1.5rem;
+}
+
+#Art{
+    left: 18%;
+    bottom: 12%;
+}
+
+#Brt{
+    left: 68%;
+    bottom: 12%;
+
+}
+
+#Crt{
+    left: 39%;
+    border: none;
+    font-size: 1.2rem;
+    bottom: 14%;
+}
+
+#rooms_h2{
+    position: relative;
+    right: 2.2%;
+}
+
+.book-now{
+    display: flex;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    left: 43%;
+    background-color: transparent;
+    border: none;
+    border-top: 2px solid black;
+    border-bottom: 2px solid #0F0906;
+    cursor: pointer;
+    transition-duration: 3s;
+    transition-timing-function: ease-in-out;
+    bottom: 10%;
+    position: relative;
+    font-size: 1.5rem;
+    width: auto;
+    margin: 2px;
+}
+
+.book-now:hover{
+    border-top: 0px;
+    border-bottom: 0px;
+}
+/* end of rooms css */
+
+fieldset{ 
+    display: block;
+    border-color: black;
+    position: relative;
+    /* top: 10rem; */
+    /* height: 10rem; */
+    border-right: none;
+    border-left: none;
+
+}
+
+/* bookings section */
+#bookings_logo{
+    position: absolute;
+    width: 15rem;
+    top: 23.5rem;
+    margin-left: 5%;
+    margin-right: 1%;
+    z-index: 1;
+
+}
+
+#booking_form{
+    position: relative;
+    padding-left: 40%;
+
+}
+
+label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
+,#start_date, #finish_date {  
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+/* facilities styling */
+
+#title{
+    position: relative;
+    top: 0.5rem;
+    left: 4rem;
+
+}
+
+.picture {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+
+}
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.descriptive-text {
+    position: absolute;
+    bottom: 2rem;
+    opacity: 0;
+    transition: 0.5s;
+    color: white;
+    background: rgba(108, 122, 137, 0.7);
+    width: 100%;
+    text-align: center;
+}
+
+
+.picture:hover .descriptive-text{
+    opacity: 1;
+}
+
+.attractions_main {
+    position: relative;
+}
+
+.row {
+    padding: 10px;
+}
+
+.row .picture{
+    margin-top: 8px;
+    display: inline-block; 
+
+}
+
+.caption{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+
+  
+/* Attractions */
+
+#row-container{
+    flex-direction: column;
+}
