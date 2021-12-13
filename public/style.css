@@ -467,29 +467,34 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
     /* border-top: 2px solid black; */
     border-bottom: 2px solid #0F0906;
     /* bottom: 10%; */
-    position: absolute;
+    position: relative;
     font-size: 1.5rem;
+    text-size-adjust: auto;
+
 }
 
 #Art{
     left: 20%;
-    top: 28%;
+    bottom: 3rem;
+    border: none;
 }
 
 #Brt{
     left: 68%;
-    top: 28%;
+    bottom: 5rem;
+    border: none;
 
 }
 
-#Crt{
+/* #Crt{
     left: 39%;
     border: none;
     font-size: 1.2rem;
     bottom: 14%;
-}
+} */
 
 #double_desc{
+    float: left;
     left: 6%;
     bottom: 7%;
     border: none;
@@ -497,7 +502,8 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
 }
 
 #twin_desc{
-    right: 9%;
+    float: right;
+    right: 10%;
     bottom: 7%;
     border: none;
     font-size: 1.2rem;
@@ -513,7 +519,7 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
     display: flex;
     text-align: center;
     font-family: 'Raleway', sans-serif;
-    left: 43%;
+    left: 60px;
     background-color: transparent;
     border: none;
     border-top: 2px solid black;
@@ -521,11 +527,12 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
     cursor: pointer;
     transition-duration: 3s;
     transition-timing-function: ease-in-out;
-    bottom: 11%;
+    bottom: 50px;
     position: relative;
     font-size: 1.5rem;
     width: auto;
-    margin: 2px;
+    /* margin: 2px; */
+    /* float: center; */
 }
 
 .book-now:hover{
