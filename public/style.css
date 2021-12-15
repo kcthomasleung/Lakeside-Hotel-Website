@@ -1,8 +1,6 @@
 
 
 
-
-
 /* All Pages styling */
 a {
     text-decoration: none;
@@ -377,88 +375,6 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
 
 
 
-/* ScreenSize for iphone X */
-
-@media screen and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3){ 
-
-
-/* All */
-
-    #logo{
-        position: absolute;
-        display: block;
-        justify-content: center;
-        left: 30%;
-    }
-
-    .navbar{
-        background-color: #0F0906;
-        font-size: 150%;
-        display: flex;
-        width: 375px;
-        flex-direction: column;
-        margin-top: 150px;
-        }
-
-
-    .navbar a {
-        color: #C4C4C4;
-        text-align: left;
-        padding: 30px;
-        position: relative;
-        text-decoration: none; 
-        margin-left: 10px;
-        border-left: 1rem solid #C4C4C4;
-        /* width: 55%; */
-    }
-    
-    .navbar a:hover {
-        color: #B98B73;
-    }
-
-    body {
-        display: flex;
-        flex-direction: column;
-        background: rgba(92, 105, 60, 0.5);
-    }
-    
-    main{
-        flex-grow: 1;
-    }
-    
-
-/* Homepage */
-
-    h1{
-        font-size: 50px;
-        text-align: center;
-    }
-
-    .skyline{
-        width:375px;
-        height: 200px;
-        border: 0.3rem solid black;
-    }
-
-    .left{
-        width:350px;
-        height: 200px;
-        margin-left: -277px;
-        margin-top: 200px;
-    }
-
-
-    #footer{
-        background-color: #0F0906;
-        color:#C4C4C4;
-        padding: 2px 15px;
-        width: 375px;
-        margin-top: 300px;
-    }
-      
-};
 
 /* rooms css */
 
@@ -475,7 +391,7 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
     border: 0.2rem solid black;
     display: flex;
     flex-direction: column;
-    bottom: 2.1rem;
+    bottom: 3rem;
     left: 7%;
 }
 
@@ -532,7 +448,6 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
 .containerB .r_right {
     position: absolute;
     border: 0.2rem solid black;
-
     bottom: 1rem;
     left: 100%;
     width: 35rem;
@@ -552,26 +467,47 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
     /* border-top: 2px solid black; */
     border-bottom: 2px solid #0F0906;
     /* bottom: 10%; */
-    position: absolute;
+    position: relative;
     font-size: 1.5rem;
+    text-size-adjust: auto;
+
 }
 
 #Art{
-    left: 18%;
-    bottom: 12%;
+    left: 20%;
+    bottom: 3rem;
+    border: none;
 }
 
 #Brt{
     left: 68%;
-    bottom: 12%;
+    bottom: 5rem;
+    border: none;
 
 }
 
-#Crt{
+/* #Crt{
     left: 39%;
     border: none;
     font-size: 1.2rem;
     bottom: 14%;
+} */
+
+#double_desc{
+    float: left;
+    left: 6%;
+    bottom: 7%;
+    border: none;
+    font-size: 1.2rem;
+}
+
+#twin_desc{
+    float: right;
+    right: 10%;
+    bottom: 7%;
+    border: none;
+    font-size: 1.2rem;
+
 }
 
 #rooms_h2{
@@ -583,7 +519,7 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
     display: flex;
     text-align: center;
     font-family: 'Raleway', sans-serif;
-    left: 43%;
+    left: 60px;
     background-color: transparent;
     border: none;
     border-top: 2px solid black;
@@ -591,11 +527,12 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
     cursor: pointer;
     transition-duration: 3s;
     transition-timing-function: ease-in-out;
-    bottom: 10%;
+    bottom: 50px;
     position: relative;
     font-size: 1.5rem;
     width: auto;
-    margin: 2px;
+    /* margin: 2px; */
+    /* float: center; */
 }
 
 .book-now:hover{
@@ -700,3 +637,164 @@ label, #std_d_rm_qty, #sup_d_rm_qty, #std_t_rm_qty, #sup_t_rm_qty
     font-weight: bold;
     background-color: #C4C4C4;
 }
+
+/* ScreenSize for iphone X */
+
+@media screen and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3){ 
+
+
+/* All */
+
+    #logo{
+        position: absolute;
+        display: block;
+        justify-content: center;
+        left: 30%;
+    }
+
+    .navbar{
+        background-color: #0F0906;
+        font-size: 150%;
+        display: flex;
+        width: 375px;
+        flex-direction: column;
+        margin-top: 150px;
+        }
+
+
+    .navbar a {
+        color: #C4C4C4;
+        text-align: left;
+        padding: 30px;
+        position: relative;
+        text-decoration: none; 
+        margin-left: 10px;
+        border-left: 1rem solid #C4C4C4;
+        /* width: 55%; */
+    }
+    
+    .navbar a:hover {
+        color: #B98B73;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        background: rgba(92, 105, 60, 0.5);
+    }
+    
+    main{
+        flex-grow: 1;
+    }
+    
+
+/* Homepage */
+
+    h1{
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .skyline{
+        width:375px;
+        height: 200px;
+        border: 0.3rem solid black;
+    }
+
+    .left{
+        width:350px;
+        height: 200px;
+        margin-left: -277px;
+        margin-top: 200px;
+    }
+
+
+    #footer{
+        background-color: #0F0906;
+        color:#C4C4C4;
+        padding: 2px 15px;
+        width: 375px;
+        margin-top: 300px;
+    }
+      
+    /* rooms */
+
+
+    #double_desc{
+        left:2.9%;
+        border: none;
+        font-size: 1.2rem;
+        top: 125%;
+    }
+    
+    #twin_desc{
+        left: 0%;
+        border: none;
+        font-size: 1.2rem;
+        top: 177%;
+    }
+
+    #Art{
+        display: none;
+    }
+    
+    #Brt{
+        display: none;
+    
+    }
+
+    .containerA {
+        float:left;
+        position: relative;
+        margin: 1rem;
+        width: 93%;
+        border: 0.2rem solid black;
+        display: flex;
+        flex-direction: column;
+        /* bottom: 2.1rem; */
+        left: -0.5%;
+    }
+    
+    .containerB {
+        float: right;
+        position: relative;
+        margin: 1rem;
+        width: 93%;
+        border: 0.2rem solid black;
+        /* left: -38%; */
+        display: flex;
+        flex-direction: column;
+        top: 10rem;
+        left: 1%;
+
+    }
+
+    #rooms_h2{
+        position: relative;
+        right: 2.2%;
+        top: -22px;
+    }
+
+    .book-now{
+        display: flex;
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+        left: 33%;
+        background-color: transparent;
+        border: none;
+        border-top: 2px solid black;
+        border-bottom: 2px solid #0F0906;
+        cursor: pointer;
+        transition-duration: 3s;
+        transition-timing-function: ease-in-out;
+        bottom: -280px;
+        position: relative;
+        font-size: 1.5rem;
+        width: auto;
+        margin: 2px;
+    }
+    
+
+};
