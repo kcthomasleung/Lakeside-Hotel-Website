@@ -127,7 +127,7 @@ app.get("/reception", async (req, res) => {
   try{
     const pool = new Pool(config)
     const client = await pool.connect();
-    const q = "select * from room;";
+    const q = "select * from room order by r_no;";
     await client.query(q, (err, results) => {
       if (err) { // error handling
         console.log(err.stack);
